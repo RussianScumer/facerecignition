@@ -17,12 +17,12 @@ left_eye, right_eye = sorted_eyes[0], sorted_eyes[1]
 
 left_eye_center = (left_eye[0] + left_eye[2] // 2, left_eye[1] + left_eye[3] // 2)
 right_eye_center = (right_eye[0] + right_eye[2] // 2, right_eye[1] + right_eye[3] // 2)
-# Calculate angle for rotation
+
 dy = right_eye_center[1] - left_eye_center[1]
 dx = right_eye_center[0] - left_eye_center[0]
 angle = math.degrees(math.atan2(dy, dx))
 center = (np.float32(left_eye_center[0]), np.float32(left_eye_center[1]))
-    # Rotate image
+
 h, w = faces[11].shape[:2]
 M = cv2.getRotationMatrix2D(center, angle, 1.0)
 aligned_img = cv2.warpAffine(faces[11], M, (w, h))
