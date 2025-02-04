@@ -1,7 +1,8 @@
-./JSON2YOLO
-./faces
-./alignedfaces
+JSON2YOLO/
+faces/
+alignedfaces/
 **/*.jpg
 **/*.dat
 **/*.pt
 **/*.jpeg
+__pycache__/

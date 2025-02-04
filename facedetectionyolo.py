@@ -3,7 +3,7 @@ import os
 from ultralytics import YOLO 
 import numpy as np
 
-model = YOLO("yolov11n-face.pt")
+model = YOLO("best.pt")
 img = cv2.imread('3.jpg')
 imgWithRect = cv2.imread('3.jpg')
 if os.path.isdir('faces') == 0: 
