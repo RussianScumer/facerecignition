@@ -4,13 +4,13 @@ from ultralytics import YOLO
 import numpy as np
 
 model = YOLO("best.pt")
-img = cv2.imread('3.jpg')
-imgWithRect = cv2.imread('3.jpg')
+img = cv2.imread('4.jpg')
+imgWithRect = cv2.imread('4.jpg')
 if os.path.isdir('faces') == 0: 
     os.mkdir('faces')
 
 i = 0
-results = model(["3.jpg"])
+results = model(["4.jpg"])
 for result in results:
     for box in result.boxes:
         x1, y1, x2, y2 = map(int, box.xyxy[0])

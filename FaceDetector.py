@@ -1,6 +1,8 @@
 import cv2
 import os
 from ultralytics import YOLO
+import utils
+import dlib
 
 class FaceDetector:
     def __init__(self, model_path: str, image_path: str, output_dir: str = 'faces'):
@@ -8,7 +10,7 @@ class FaceDetector:
         self.image_path = image_path
         self.output_dir = output_dir
         self.image = cv2.imread(image_path)
-
+        
         try:
             self.image_with_rectangles = self.image.copy()
         except NameError:
@@ -16,8 +18,7 @@ class FaceDetector:
 
         self.detections = []
 
-        if not os.path.isdir(self.output_dir):
-            os.mkdir(self.output_dir)
+        utils.clear_dir(self.output_dir)
 
     @property
     def detections_count(self) -> int:
@@ -36,8 +37,3 @@ class FaceDetector:
         for i, (x1, y1, x2, y2) in enumerate(self.detections, start=1):
             face_image = self.image[y1:y2, x1:x2]
             cv2.imwrite(f'{self.output_dir}/{i}.jpg', face_image)
-    
-    def show_image(self):
-        cv2.imshow('Detected Faces', self.image_with_rectangles)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
