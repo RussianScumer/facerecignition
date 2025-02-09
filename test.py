@@ -4,7 +4,7 @@ import math
 import numpy as np
 
 predictor =  dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
-face = cv2.imread('8.jpg')
+face = cv2.imread('1.jpg')
 height, width = face.shape[:2]
 face_rect = dlib.rectangle(0, 0, width, height)
 landmarks = predictor(face, face_rect)
